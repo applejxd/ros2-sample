@@ -1,0 +1,28 @@
+services:
+  ros2:
+    image: local/ros2-sample:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # for interactive shell
+    tty: true
+    # user: nonroot
+    restart: always
+    command: "/bin/bash"
+    volumes:
+      - ..:/home/nonroot/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - TURTLEBOT3_MODEL=burger
+    network_mode: "host"
+    # for GPU
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    shm_size: '16gb'
