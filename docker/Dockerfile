@@ -49,6 +49,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     ros-humble-desktop \
     python3-colcon-common-extensions \
+    git clang-format \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

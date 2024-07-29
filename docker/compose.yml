@@ -16,7 +16,7 @@ services:
       - DISPLAY
       - QT_X11_NO_MITSHM=1
       - TURTLEBOT3_MODEL=burger
-    network_mode: "host"
+    # network_mode: "host"
     # for GPU
     deploy:
       resources:
